@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Mental Health Score Predictor</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <h1>How is screen time affecting student well-being?</h1>
+  <p class="sub">Enter a student's daily habits to get a predicted mental health score from your trained model.</p>
+
+  <div class="grid">
+    <form class="panel" id="form" novalidate>
+      <h2>Student profile</h2>
+      <div class="fields">
+        <div><label for="age">Age</label><input id="age" type="number" min="10" max="100" value="20" required></div>
+        <div><label for="gender">Gender</label>
+          <select id="gender"><option>Female</option><option>Male</option></select></div>
+
+        <div><label for="country">Country</label>
+          <input id="country" list="countries" value="India" required>
+          <datalist id="countries"></datalist></div>
+        <div><label for="academic_level">Academic level</label>
+          <select id="academic_level"><option>Undergraduate</option><option>Graduate</option><option>High School</option></select></div>
+
+        <div><label for="most_used_platform">Most used platform</label>
+          <select id="most_used_platform"></select></div>
+        <div><label for="purpose_of_use">Main purpose</label>
+          <select id="purpose_of_use"><option>Entertainment</option><option>Networking</option><option>Education</option><option>News</option></select></div>
+
+        <div class="full"><label for="avg_daily_usage_hours">Social media per day</label>
+          <div class="range"><input id="avg_daily_usage_hours" type="range" min="0" max="24" step="0.5" value="4"><output></output></div></div>
+        <div class="full"><label for="study_hours">Study per day</label>
+          <div class="range"><input id="study_hours" type="range" min="0" max="24" step="0.5" value="4"><output></output></div></div>
+        <div class="full"><label for="physical_activity_hours">Physical activity per day</label>
+          <div class="range"><input id="physical_activity_hours" type="range" min="0" max="24" step="0.5" value="1"><output></output></div></div>
+        <div class="full"><label for="sleep_hours_per_night">Sleep per night</label>
+          <div class="range"><input id="sleep_hours_per_night" type="range" min="0" max="24" step="0.5" value="7"><output></output></div></div>
+
+        <div class="full"><label for="daily_unlocks">Phone unlocks per day</label>
+          <input id="daily_unlocks" type="number" min="0" value="60" required></div>
+
+        <div class="full"><label id="stress-l">Stress level</label>
+          <div class="seg" role="radiogroup" aria-labelledby="stress-l"></div></div>
+      </div>
+      <button class="go" id="btn" type="submit">Predict score</button>
+      <p class="err" id="err" role="alert" hidden></p>
+    </form>
+
+    <aside class="panel result" aria-live="polite">
+      <h2>Predicted score</h2>
+      <svg class="gauge" viewBox="0 0 200 110" aria-hidden="true">
+        <path class="track" d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke-width="16" stroke-linecap="round"/>
+        <path class="fill" id="arc" d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke-width="16" stroke-linecap="round"/>
+      </svg>
+      <div class="score"><span id="val">–</span><small> / 10</small></div>
+      <p class="verdict" id="verdict">Waiting for input</p>
+      <p class="note" id="note">Fill in the form and select Predict score.</p>
+      <p class="fine">A statistical estimate from survey data, not a diagnosis. If you're struggling, talk to a counselor or doctor.</p>
+    </aside>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
